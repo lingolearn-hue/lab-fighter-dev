@@ -1,6 +1,6 @@
 # Lab Fighter
 
-Version: 0.3 — 2026-10-01
+Version: 0.4 — 2026-10-01
 
 An open-source, physics-aware laboratory-themed fighting game. A lab-coated
 scientist fights in classic arcade fighting-game style. See `Spec` for the
@@ -11,6 +11,9 @@ Vite (build/dev), Vitest (tests). Runs as a static site — no server, no
 native engine export step. Previously prototyped in Godot 4.x/GDScript;
 that approach was abandoned in favor of this stack for simpler, verifiable
 deployment (plain static build vs. a game-engine web export pipeline).
+
+**Scope note**: 2D/horizontal-view stages only for now. 3D stage mode
+(spec §7) is deferred — not started.
 
 ## Status
 
@@ -52,7 +55,9 @@ npm run build     # production build to dist/
 
 Controls (placeholder, remappable later):
 - Player 1: A/D move, W jump, S crouch, F light attack, G heavy attack, H block
-- Player 2: Arrow keys move/jump/crouch, Numpad 1 light attack, Numpad 2 heavy attack, Numpad 3 block
+- Player 2: Arrow keys move/jump/crouch, `,` light attack, `.` heavy attack, `/` block
+
+Click (or press any key) once on first load to give the page keyboard focus.
 
 ## Project structure
 

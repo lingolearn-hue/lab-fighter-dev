@@ -16,7 +16,22 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
+renderer.domElement.tabIndex = 0;
 gameRoot.insertBefore(renderer.domElement, hudRoot);
+renderer.domElement.focus();
+
+const startOverlay = document.createElement("div");
+startOverlay.className = "start-overlay";
+startOverlay.textContent = "Click to start";
+gameRoot.appendChild(startOverlay);
+function dismissOverlay() {
+  startOverlay.remove();
+  renderer.domElement.focus();
+  window.removeEventListener("keydown", dismissOverlay);
+  window.removeEventListener("pointerdown", dismissOverlay);
+}
+window.addEventListener("keydown", dismissOverlay, { once: true });
+window.addEventListener("pointerdown", dismissOverlay, { once: true });
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x1a1c24);

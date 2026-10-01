@@ -25,10 +25,15 @@ export const PLAYER2_KEYS: KeyBindings = {
   right: "ArrowRight",
   jump: "ArrowUp",
   crouch: "ArrowDown",
-  light: "Numpad1",
-  heavy: "Numpad2",
-  block: "Numpad3",
+  light: "Comma",
+  heavy: "Period",
+  block: "Slash",
 };
+
+const ALL_BOUND_CODES = new Set([
+  ...Object.values(PLAYER1_KEYS),
+  ...Object.values(PLAYER2_KEYS),
+]);
 
 export class KeyboardSource {
   private held = new Set<string>();
@@ -36,10 +41,12 @@ export class KeyboardSource {
 
   constructor() {
     window.addEventListener("keydown", (e) => {
+      if (ALL_BOUND_CODES.has(e.code)) e.preventDefault();
       if (!this.held.has(e.code)) this.justPressed.add(e.code);
       this.held.add(e.code);
     });
     window.addEventListener("keyup", (e) => {
+      if (ALL_BOUND_CODES.has(e.code)) e.preventDefault();
       this.held.delete(e.code);
     });
   }
