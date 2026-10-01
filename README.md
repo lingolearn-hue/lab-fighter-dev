@@ -42,7 +42,7 @@ body physics).
 
 ## Requirements
 
-- Node.js 20+
+- Node.js 22.12+ (vitest 5 requires it; Vite itself supports 20.19+)
 
 ## Running
 
